@@ -1,0 +1,22 @@
+# 链接、工具存储
+下列链接将逐步替换成自己的markdown
+
+- [ ] [MarkDown数学公式语法整理-CSDN博客](https://blog.csdn.net/guoxulieying/article/details/131107653)
+- [ ] [【原创】Typora无限重置方法记录 2022.04-小墨の博客](https://www.only4.work/blog/?id=379)
+- [ ] [FFmpeg：强大的音视频处理工具指南-CSDN博客](https://blog.csdn.net/u014390502/article/details/144252535)
+- [ ] [Git仓库与GitHub使用教程-CSDN博客](https://blog.csdn.net/weixin_43788282/article/details/125744676)
+
+# oj
+
+* [gmoj.net](https://gmoj.net/)
+    
+    * [初中](https://gmoj.net/junior)
+
+    * [xx.gmoj.net](https://xx.gmoj.net)
+
+        * [语言](https://xx.gmoj.net/oj)
+        * [算法](https://xx.gmoj.net/oj2)
+        * [比赛](https://xx.gmoj.net/oj3)   
+
+* [洛谷](https://www.luogu.com.cn)
+* [ATCoder](https://atcoder.jp)
