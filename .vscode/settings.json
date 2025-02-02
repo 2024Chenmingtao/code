@@ -39,7 +39,8 @@
         "sstream": "cpp",
         "stdexcept": "cpp",
         "streambuf": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "set": "cpp"
     },
     "editor.fontSize": 19,
     "C_Cpp.default.cppStandard": "c++20"
