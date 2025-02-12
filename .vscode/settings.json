@@ -40,7 +40,10 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "typeinfo": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "random": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp"
     },
     "editor.fontSize": 19,
     "C_Cpp.default.cppStandard": "c++20"
