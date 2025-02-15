@@ -43,7 +43,9 @@
         "set": "cpp",
         "random": "cpp",
         "forward_list": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "cstring": "cpp",
+        "map": "cpp"
     },
     "editor.fontSize": 19,
     "C_Cpp.default.cppStandard": "c++20"
