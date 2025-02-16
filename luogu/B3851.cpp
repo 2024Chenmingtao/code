@@ -1,68 +1,87 @@
-#include <cstdio>
-#include <cmath>
-#include <cstring>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
-
-struct Node
+int n, sp[100][100];
+string a[20], x;
+char tt[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+struct sz
 {
-    int id;
-    int value;
-} cnt[300];
-
-bool cmp(Node x, Node y)
+    int t, z;
+    string s;
+    char xx;
+} p[10000];
+void zhuan(string x, int j, int i)
 {
-    return x.value > y.value;
+    int sum = 0;
+    if (x[1] <= '9' && x[1] >= '0')
+    {
+        sum += (x[1] - '0') * 1;
+    }
+    else
+    {
+        sum += (x[1] - 'A' + 10) * 1;
+    }
+    if (x[0] <= '9' && x[0] >= '0')
+    {
+        sum += (x[0] - '0') * 16;
+    }
+    else
+    {
+        sum += (x[0] - 'A' + 10) * 16;
+    }
+    p[sum].t++;     // 次数加一
+    p[sum].s = x;   // 保留其十六进制，注意是字符串
+    sp[i][j] = sum; // 保留它的十进制，方便输出
 }
-
-int n, map[30][30], ans[30][30], a[30], stringlen;
+bool cmp(sz a, sz b)
+{ // 注意判断
+    if (a.t != b.t)
+    {
+        return a.t > b.t;
+    }
+    else
+    {
+        return a.z < b.z;
+    }
+}
 int main()
 {
-    scanf("%d", &n);
-    for (int i = 1; i <= n; i++)
+    cin >> n;
+    for (int i = 0; i <= 256; i++)
     {
-        char temp[100];
-        int k;
-        scanf("%s", temp);
-        stringlen = strlen(temp);
-        for (int j = 0; j < strlen(temp); j++)
-        {
-
-            if (j % 2 == 0)
-            {
-                k = ('0' <= temp[j] && temp[j] <= '9') ? (temp[j] - '0') : (temp[j] - 'A');
-                k *= 10;
-            }
-            if (j % 2 != 0)
-            {
-                k += ('0' <= temp[j] && temp[j] <= '9') ? (temp[j] - '0') : (temp[j] - 'A');
-                map[i][j / 2] = k;
-                cnt[k].value++;
-                cnt[k].id = k;
-            }
-        }
+        p[i].z = i, p[i].t = 0; // 初始化
     }
-    sort(cnt, cnt + 256, cmp);
-    for (int i = 0; i < 16; i++)
-    {
-        a[i] = cnt[i].id;
-    }
-    sort(a, a + 16);
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < stringlen / 2; j++)
+        cin >> a[i];
+        for (int j = 0; j < a[i].size(); j += 2)
         {
-            int maxn = 1e9 + 7;
-            for (int index = 0; index < 16; index++)
+            x += a[i][j], x += a[i][j + 1];
+            zhuan(x, j / 2, i);
+            x = "";
+        }
+    }
+    sort(p, p + 256, cmp);
+    for (int i = 0; i < 16; i++)
+    {
+        cout << p[i].s;
+        p[i].xx = tt[i];
+    }
+    cout << endl;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < a[i].size() / 2; j++)
+        {
+            int mm = 300, wz;
+            for (int q = 0; q < 16; q++)
             {
-                if (abs(map[i][j] - a[index]) < maxn)
+                if (abs(sp[i][j] - p[q].z) < mm)
                 {
-                    maxn = abs(map[i][j] - a[index]);
-                    ans[i][j] = a[index];
+                    wz = q, mm = abs(sp[i][j] - p[q].z);
                 }
             }
-            printf("%c", (ans[i][j]<10)?ans[i][j]+'0':ans[i][j]-10+'A');
+            cout << p[wz].xx;
         }
-        printf("\n");
+        cout << endl;
     }
+    return 0;
 }
