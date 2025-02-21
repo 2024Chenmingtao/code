@@ -2,6 +2,7 @@
 下列链接将逐步替换成自己的markdown
 
 - [ ] [MarkDown数学公式语法整理-CSDN博客](https://blog.csdn.net/guoxulieying/article/details/131107653)
+- [ ] [Markdown语法、符号、公式【Markdown】-CSDN博客](https://blog.csdn.net/qq_41918107/article/details/135462029)
 - [ ] [【原创】Typora无限重置方法记录 2022.04-小墨の博客](https://www.only4.work/blog/?id=379)
 - [ ] [FFmpeg：强大的音视频处理工具指南-CSDN博客](https://blog.csdn.net/u014390502/article/details/144252535)
 - [ ] [Git仓库与GitHub使用教程-CSDN博客](https://blog.csdn.net/weixin_43788282/article/details/125744676)
@@ -20,3 +21,9 @@
 
 * [洛谷](https://www.luogu.com.cn)
 * [ATCoder](https://atcoder.jp)
+
+# AI
+* [KIMI](https://kimi.moonshot.cn)
+* [DeepSeek](https://chat.deepseek.com)
+* [文心一言](https://yiyan.baidu.com)
+* [豆包](https://www.doubao.com)

@@ -72,6 +72,6 @@
         "typeindex": "cpp",
         "valarray": "cpp"
     },
-    "editor.fontSize": 19,
+    "editor.fontSize": 23,
     "C_Cpp.default.cppStandard": "c++20"
 }

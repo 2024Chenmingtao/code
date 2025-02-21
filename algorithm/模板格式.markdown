@@ -1,0 +1,8 @@
+# algorithm 文件夹下的模板格式
+1. 简单的文件名
+2. 通用性的使用方式
+# 代码模板
+1. 包含常用头文件的[基本模板](main.cpp)
+2. [深度优先搜索](dfs.cpp)
+3. [宽度优先搜索(使用stl)](bfs-stl.cpp)
+4. [tarjan算法](tarjan.cpp)
