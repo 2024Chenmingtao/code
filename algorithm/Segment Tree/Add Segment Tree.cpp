@@ -1,18 +1,18 @@
 #include <cstdio>
 #define MAXN 100000
-long long tree[4 * MAXN + 10], a[MAXN + 10], lazy[4 * MAXN + 10];
+long long tree[4 * MAXN + 10], a[MAXN + 10], add_lazy[4 * MAXN + 10];
 void down(int x, int l, int r)
 {
-    if (lazy[x] != 0)
+    if (add_lazy[x] != 0)
     {
         int mid = (l + r) >> 1;
         int left_len = mid - l + 1;
         int right_len = r - mid;
-        tree[x << 1] += lazy[x] * left_len;
-        lazy[x << 1] += lazy[x];
-        tree[(x << 1) + 1] += lazy[x] * right_len;
-        lazy[(x << 1) + 1] += lazy[x];
-        lazy[x] = 0;
+        tree[x << 1] += add_lazy[x] * left_len;
+        add_lazy[x << 1] += add_lazy[x];
+        tree[(x << 1) + 1] += add_lazy[x] * right_len;
+        add_lazy[(x << 1) + 1] += add_lazy[x];
+        add_lazy[x] = 0;
     }
 }
 void build(int l, int r, int x)
@@ -34,7 +34,7 @@ long long query(int L, int R, int l, int r, int x)
     {
         return tree[x];
     }
-    if (lazy[x] != 0)
+    if (add_lazy[x] != 0)
     {
         down(x, l, r);
     }
@@ -59,7 +59,7 @@ void add_region_modify(int l, int r, int L, int R, int x, long long add_value)
     if (L <= l && r <= R)
     {
         tree[x] += add_value * (r - l + 1);
-        lazy[x] += add_value;
+        add_lazy[x] += add_value;
         return;
     }
     int mid = (l + r) >> 1;
