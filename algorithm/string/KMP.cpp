@@ -1,66 +1,58 @@
+// 0-Base
+// 字符串从0开始
 #include <cstring>
-
-int next[1000];
-char a[1000], b[1000]; // a.substr()=b
+#include <cstdio>
+const int MAXN = 1000006;
+int nxt[MAXN];
+char a[MAXN], b[MAXN]; // a.substr()=b
+int alen, blen;
 void make_next()
 {
-    int len = 0; // next
-    int i = 1;
-    int cnt = 0;
-    while (i < strlen(b))
+    int j = -1; // 当前(需计算next值的位置)的前一个位置的next值
+    nxt[0] = -1;
+    // b[0]不需要计算，肯定为-1
+    for (int i = 1; i < blen; i++)
     {
-        if (b[len] == b[i])
+        while (j != -1 /*没有到最前面*/ && b[i] != b[j + 1] /*失配*/)
         {
-            len++;
-            cnt++;
-            next[cnt] = len;
-            i++;
+            j = nxt[j]; // 往前跳
         }
-        else
+        if (b[i] == b[j + 1]) // 证明找到了相等的位置，位置为j+1
         {
-            if (len == 0)
-            {
-                cnt++;
-                next[cnt] = 0;
-                i++;
-            }
-            else
-            {
-                len = next[len - 1];
-            }
+            j++;
         }
+        nxt[i] = j; // 如果未匹配，j值自然为-1
     }
 }
 void kmp()
 {
     make_next();
-    int alen = strlen(a), blen = strlen(b);
-    int i = 0;
-    int j = 0;
-    while (i < alen)
+    int j = -1;
+    for (int i = 0; i < alen; i++)
     {
-        if (a[i] == b[j]) // 匹配
+        while (j != -1 && a[i] != b[j + 1])
         {
-            i++;
-            j++;
+            j = nxt[j];
         }
-        else if (j > 0) // 匹配失败，字符串后移
+        if (a[i] == b[j + 1])
         {
-            j = next[j];
+            j++; // 匹配位置增加一
         }
-        else
+        if (j == blen - 1) // b串完全匹配
         {
-            i++;
-        }
-        if (j == blen)
-        {
-            throw_answer(i); // 指从a[i]~a[i+j]为匹配的子串
-            j = next[j];
-            // j=0 用于找出所有不重复的字串
+            printf("%d\n", i - j + 1);
+            j = nxt[j];
         }
     }
 }
 int main()
 {
-    scanf("%s%s",a,b);
+    scanf("%s%s", a, b);
+    alen = strlen(a), blen = strlen(b);
+    kmp();
+
+    for (int i = 0; i < blen; i++)
+    {
+        printf("%d ", nxt[i] + 1);
+    }
 }

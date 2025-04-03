@@ -25,10 +25,11 @@ public:
         int l = strlen(s);          // 字符串长度
         for (int i = 0; i < l; i++) // 遍历字符串的每个字符
         {
-            int c = s[i] - 'a'; // 将字符转换为0-25的索引（假设输入为小写字母）
+            int c = s[i] - 'a';  // 将字符转换为0-25的索引（假设输入为小写字母）
             if (tree[p][c] == 0) // 如果当前字符对应的子节点不存在
             {
-                tree[p][c] = ++cnt; // 创建新节点，cnt递增作为新节点编号
+                cnt++;
+                tree[p][c] = cnt; // 创建新节点，cnt递增作为新节点编号
             }
             p = tree[p][c]; // 移动指针p到子节点，继续处理下一个字符
         }
@@ -45,7 +46,7 @@ public:
         for (int i = 0; i < l; i++)
         {
             int c = s[i] - 'a'; // 字符转换为索引
-            if (!tree[p][c])     // 若当前字符路径不存在
+            if (!tree[p][c])    // 若当前字符路径不存在
             {
                 return false; // 字符串不存在，直接返回false
             }
@@ -55,7 +56,7 @@ public:
     }
     tire()
     {
-        memset(exist,false,sizeof(exist));
-        memset(tree,0,sizeof(tree));
+        memset(exist, false, sizeof(exist));
+        memset(tree, 0, sizeof(tree));
     }
 };
