@@ -1,44 +1,32 @@
-#include <queue>
 #include <cstdio>
 #include <set>
-#include <stack>
 using namespace std;
-set<int> a, b;
-priority_queue<int> sum;
+int n;
+const int MAXN = 100005;
+int a[MAXN], b[MAXN];
+set<int> answer;
 int main()
 {
-    int n, temp;
     scanf("%d", &n);
     for (int i = 1; i <= n; i++)
     {
-        scanf("%d", &temp);
-        a.insert(temp);
+        scanf("%d", &a[i]);
     }
     for (int i = 1; i <= n; i++)
     {
-        scanf("%d", &temp);
-        b.insert(temp);
+        scanf("%d", &b[i]);
     }
-    for (set<int>::iterator it = a.begin(); it != a.end(); it++)
+    for (int i = 1; i <= n; i++)
     {
-        for (set<int>::iterator it2 = b.begin(); it2 != b.end(); it2++)
+        for (int j = 1; (i - 1) * (j - 1) <= n && j <= n; j++)
         {
-            sum.push((*it) + (*it2));
-            if (sum.size() > n)
-            {
-                sum.pop();
-            }
+            answer.insert(a[i] + b[j]);
         }
     }
-    stack<int> stk;
-    while (!sum.empty())
+    auto it = answer.begin();
+    for (int i = 1; i <= n; i++, it++)
     {
-        stk.push(sum.top());
-        sum.pop();
+        printf("%d ", *it);
     }
-    while (!stk.empty())
-    {
-        printf("%d ", stk.top());
-        stk.pop();
-    }
+    return 0;
 }
