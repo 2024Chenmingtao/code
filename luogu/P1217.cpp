@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <vector>
 using namespace std;
-int a,b;
+int inputA,b;
 bool palindrome(int x)
 {
 	int t=x,temp=0;
@@ -45,8 +45,8 @@ bool check(int i)
 }
 int main()
 {
-	scanf("%d%d",&a,&b);
-	for(int i=a;i<=b;i++)
+	scanf("%d%d",&inputA,&b);
+	for(int i=inputA;i<=b;i++)
 	{
 		if(check(i))
 		{
